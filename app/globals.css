@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #c9a227;
+  --color-primary-dark: #a6841e;
+  --color-primary-light: #f7efd6;
+  --color-accent: #b8722e;
+  --color-accent-dark: #8f5720;
+  --color-ink: #211c14;
+  --color-ink-muted: #6b5f4d;
+  --color-ink-soft: #9c9080;
+  --color-bg: #ffffff;
+  --color-bg-soft: #faf6ec;
+  --color-line: #ede4cf;
+  --color-hero-title: #4bb8f0;
+  --color-button: #f59d51;
+}
+
+[data-theme="dark"] {
+  --color-ink: #f7f1e3;
+  --color-ink-muted: #c7bba3;
+  --color-ink-soft: #8c8270;
+  --color-bg: #0f0d0a;
+  --color-bg-soft: #1b160e;
+  --color-line: rgba(201, 162, 39, 0.18);
+  --color-hero-title: #f59d51;
+  --color-button: #4bb8f0;
+}
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-primary-light: var(--color-primary-light);
+  --color-accent: var(--color-accent);
+  --color-accent-dark: var(--color-accent-dark);
+  --color-ink: var(--color-ink);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-bg: var(--color-bg);
+  --color-bg-soft: var(--color-bg-soft);
+  --color-line: var(--color-line);
+
+  --font-display: var(--font-heading);
+  --font-sans: var(--font-inter);
+}
+
+html {
+  scroll-behavior: auto;
+  overflow-x: clip;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  background: var(--color-ink);
+  color: var(--color-bg);
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(10%, -14%, 0) scale(1.18);
+  }
+}
+
+.animate-drift {
+  animation: drift 12s ease-in-out infinite;
+}
+
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-counter-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
